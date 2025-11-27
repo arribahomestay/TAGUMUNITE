@@ -1,0 +1,9 @@
+/* Extra tweaks for the dashboard layout */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Mimic GitHub dashboard spacing */
+main, .dashboard-main {
+  --gh-gutter: 24px;
+}

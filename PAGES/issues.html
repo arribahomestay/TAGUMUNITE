@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Issues • City Reporting Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="../styles/footer.css" />
+</head>
+<body class="h-full bg-gray-900 text-gray-100">
+  <div id="navbar-root"></div>
+
+  <div class="flex min-h-screen">
+    <!-- Left issues sidebar -->
+    <aside class="hidden md:flex w-64 bg-gray-900 border-r border-gray-800 pt-4 pb-6 px-3">
+      <nav class="w-full text-sm">
+        <p class="px-2 text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Issues</p>
+
+        <button data-view="assigned" class="issues-tab w-full flex items-center gap-2 px-2 py-1.5 mb-1 rounded-md bg-gray-800 text-gray-100 text-left">
+          <span class="w-4 flex items-center justify-center text-[12px]">▶</span>
+          <span>Assigned to me</span>
+        </button>
+
+        <button data-view="recent" class="issues-tab w-full flex items-center gap-2 px-2 py-1.5 mb-1 rounded-md hover:bg-gray-800 text-gray-300 text-left">
+          <span class="w-4 flex items-center justify-center text-[12px]">●</span>
+          <span>Recent issues</span>
+        </button>
+
+        <button data-view="resolved" class="issues-tab w-full flex items-center gap-2 px-2 py-1.5 mb-1 rounded-md hover:bg-gray-800 text-gray-300 text-left">
+          <span class="w-4 flex items-center justify-center text-[12px]">✓</span>
+          <span>Resolved</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main content placeholder -->
+    <main id="issues-main" class="flex-1 max-w-6xl mx-auto w-full px-4 pt-6 pb-10 text-sm text-gray-500">
+      <div class="h-full flex items-center justify-center">
+        <p>Select a view on the left to see issue details.</p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="border-t border-gray-800 text-[11px] text-gray-500 flex justify-center gap-4 py-4 mt-4">
+    <span>&copy; 2025 Tagum UYnite</span>
+    <a href="#" class="hover:text-gray-300">Terms</a>
+    <a href="#" class="hover:text-gray-300">Privacy</a>
+    <a href="#" class="hover:text-gray-300">Status</a>
+  </footer>
+
+  <script src="../scripts/navbar.js"></script>
+  <script src="../scripts/dashboard.js"></script>
+  <script src="../scripts/issues.js"></script>
+</body>
+</html>
