@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Simple infinite-style feed loading
+  // Simple infinite-style feed loading + view interactions
   const feedContainer = document.getElementById("dashboard-feed");
   const feedList = document.getElementById("feed-list");
 
@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", () => {
               <p class="text-xs text-gray-400">Reported by <span class="text-gray-200">${item.reporter}</span> • ${item.time}</p>
             </div>
           </div>
-          <button class="text-xs px-3 py-1 border border-gray-700 rounded-md hover:border-gray-500">View</button>
+          <button class="dashboard-view-btn text-xs px-3 py-1 border border-gray-700 rounded-md hover:border-gray-500">View</button>
         </div>
         <p class="text-gray-300 mb-2">${item.body}</p>
         <div class="flex items-center gap-3 text-xs text-gray-400">
@@ -152,5 +152,103 @@ window.addEventListener("DOMContentLoaded", () => {
         loadMore();
       }
     });
+
+    // View button handling using event delegation
+    const modal = document.getElementById("report-detail-modal");
+    const titleEl = document.getElementById("report-detail-title");
+    const metaEl = document.getElementById("report-detail-meta");
+    const bodyEl = document.getElementById("report-detail-body");
+    const tagsEl = document.getElementById("report-detail-tags");
+    const commentsEl = document.getElementById("report-detail-comments");
+    const commentForm = document.getElementById("report-detail-comment-form");
+    const commentInput = document.getElementById("report-detail-comment-input");
+    const closeBtn = document.getElementById("report-detail-close");
+    const closeBtn2 = document.getElementById("report-detail-close-secondary");
+    const scheduleBtn = document.getElementById("report-detail-schedule");
+
+    const openModal = (card) => {
+      if (!modal || !card) return;
+
+      const title = card.querySelector("p.font-medium")?.textContent || "Report";
+      const meta = card.querySelector("p.text-xs")?.textContent || "";
+      const body = card.querySelector("p.text-gray-300")?.textContent || "";
+      const tagSpans = card.querySelectorAll("div.flex.items-center.gap-3 span");
+
+      titleEl.textContent = title;
+      metaEl.textContent = meta;
+      bodyEl.textContent = body;
+
+      if (tagsEl) {
+        tagsEl.innerHTML = "";
+        tagSpans.forEach((t) => {
+          const span = document.createElement("span");
+          span.className = "px-1.5 py-0.5 rounded border border-gray-700";
+          span.textContent = t.textContent || "";
+          tagsEl.appendChild(span);
+        });
+      }
+
+      if (commentsEl) {
+        commentsEl.innerHTML = '<p class="text-[11px] text-gray-500">No comments yet. Be the first to reply to this report.</p>';
+      }
+
+      modal.classList.remove("hidden");
+    };
+
+    const closeModal = () => {
+      modal?.classList.add("hidden");
+    };
+
+    feedList.addEventListener("click", (e) => {
+      const target = e.target;
+      if (!(target instanceof HTMLElement)) return;
+      const btn = target.closest(".dashboard-view-btn");
+      if (!btn) return;
+      const card = btn.closest(".border.border-gray-700.rounded-md.p-3.bg-gray-900");
+      if (card) {
+        openModal(card);
+      }
+    });
+
+    closeBtn?.addEventListener("click", closeModal);
+    closeBtn2?.addEventListener("click", closeModal);
+
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    scheduleBtn?.addEventListener("click", () => {
+      // For now, just navigate to schedules page. Later this could prefill data.
+      window.location.href = "../PAGES/schedules.html";
+    });
+
+    // Comment posting
+    if (commentForm && commentInput && commentsEl) {
+      commentForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const text = commentInput.value.trim();
+        if (!text) return;
+
+        // Clear "no comments" message if present
+        if (commentsEl.firstElementChild && commentsEl.firstElementChild.tagName === "P" && commentsEl.firstElementChild.textContent?.includes("No comments")) {
+          commentsEl.innerHTML = "";
+        }
+
+        const row = document.createElement("div");
+        row.className = "flex items-start gap-2";
+        row.innerHTML = `
+          <div class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center text-[10px] font-semibold">U</div>
+          <div class="min-w-0">
+            <p class="text-[11px] text-gray-200 mb-0.5"><span class="font-semibold">You</span>  b7 just now</p>
+            <p class="text-xs text-gray-100"></p>
+          </div>
+        `;
+        row.querySelector("p.text-xs").textContent = text;
+        commentsEl.appendChild(row);
+
+        commentInput.value = "";
+        commentsEl.scrollTop = commentsEl.scrollHeight;
+      });
+    }
   }
 });

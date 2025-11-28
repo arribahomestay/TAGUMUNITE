@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagum UYnite - Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="../styles/footer.css" />
+</head>
+<body class="h-full bg-gray-900 text-gray-100">
+  <div id="navbar-root"></div>
+
+  <main class="max-w-6xl mx-auto w-full px-4 pt-6 pb-10 min-h-screen">
+    <!-- Top username + tabs -->
+    <header class="mb-4 border-b border-gray-800">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <div class="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center text-lg font-bold text-gray-900">U</div>
+          <div>
+            <h1 class="text-xl font-semibold">username</h1>
+            <p class="text-xs text-gray-400">@userhandle</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs similar to GitHub profile: Overview, Issues, Projects, Discussions, Management -->
+      <nav id="profile-tabs" class="flex gap-4 text-xs overflow-x-auto">
+        <button data-tab="overview" class="relative px-2 py-2 text-gray-100 border-b-2 border-orange-500">Overview</button>
+        <button data-tab="issues" class="relative px-2 py-2 text-gray-400 hover:text-gray-100">Issues</button>
+        <button data-tab="projects" class="relative px-2 py-2 text-gray-400 hover:text-gray-100">Projects</button>
+        <button data-tab="discussions" class="relative px-2 py-2 text-gray-400 hover:text-gray-100">Discussions</button>
+        <button data-tab="management" class="relative px-2 py-2 text-gray-400 hover:text-gray-100">Management</button>
+      </nav>
+    </header>
+
+    <!-- Main profile layout: left column avatar & details, right column cards -->
+    <section class="flex flex-col md:flex-row gap-6">
+      <!-- Left column: avatar + primary details -->
+      <aside class="w-full md:w-72 flex flex-col items-center md:items-start gap-4">
+        <div class="flex flex-col items-center md:items-start gap-3">
+          <div class="h-40 w-40 rounded-full bg-gray-200 flex items-center justify-center text-5xl font-bold text-gray-900">U</div>
+          <div class="text-center md:text-left">
+            <h2 class="text-xl font-semibold">username</h2>
+            <p class="text-sm text-gray-400">@userhandle</p>
+          </div>
+          <button class="px-4 py-1.5 rounded-md bg-gray-800 border border-gray-700 hover:border-gray-500 text-xs font-semibold">Edit profile</button>
+        </div>
+
+        <div class="w-full text-xs text-gray-300 space-y-1">
+          <p>Admin • Tagum UYnite</p>
+          <p>City of Tagum, Davao del Norte</p>
+          <p>Working with departments to respond to resident reports.</p>
+        </div>
+
+        <div class="w-full text-[11px] text-gray-400 space-y-1">
+          <p><span class="font-semibold text-gray-200">0</span> followers • <span class="font-semibold text-gray-200">0</span> following</p>
+          <p>Joined 2025</p>
+        </div>
+      </aside>
+
+      <!-- Right column: tabbed content -->
+      <section class="flex-1 space-y-4 text-sm">
+        <!-- Overview tab content -->
+        <div id="profile-tab-overview" class="space-y-4">
+        <!-- Popular / pinned projects card -->
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold">Pinned city initiatives</h2>
+            <button class="text-[11px] text-blue-400 hover:underline">Customize</button>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <p class="font-semibold text-gray-100 mb-1">Road repair backlog</p>
+              <p class="text-gray-400 mb-1">Key road issues reported via Tagum UYnite.</p>
+              <p class="text-[11px] text-gray-500">Category: Roads • Status: Ongoing</p>
+            </div>
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <p class="font-semibold text-gray-100 mb-1">Lighting upgrades</p>
+              <p class="text-gray-400 mb-1">Streetlight issues around major routes.</p>
+              <p class="text-[11px] text-gray-500">Category: Lighting • Status: Planning</p>
+            </div>
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <p class="font-semibold text-gray-100 mb-1">Flood-prone areas</p>
+              <p class="text-gray-400 mb-1">Reports related to drainage and flooding.</p>
+              <p class="text-[11px] text-gray-500">Category: Drainage • Status: Monitoring</p>
+            </div>
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <p class="font-semibold text-gray-100 mb-1">Public spaces</p>
+              <p class="text-gray-400 mb-1">Parks, plazas, and other shared areas.</p>
+              <p class="text-[11px] text-gray-500">Category: Public spaces • Status: Mixed</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simple contributions-style overview -->
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-sm font-semibold">Activity in the last year</h2>
+            <span class="text-[11px] text-gray-400">Sample data</span>
+          </div>
+          <p class="text-gray-400 mb-2">Visual timeline of reports reviewed, actions scheduled, and messages sent could appear here later.</p>
+          <div class="h-24 rounded-md bg-gray-900 border border-dashed border-gray-700 flex items-center justify-center text-[11px] text-gray-500">
+            Activity heatmap placeholder
+          </div>
+        </div>
+
+        <!-- Recent activity -->
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+          <h2 class="text-sm font-semibold mb-2">Recent admin activity</h2>
+          <ul class="space-y-2 text-gray-300">
+            <li>
+              <span class="font-semibold text-gray-100">Reviewed</span> report "Pothole on 3rd Ave & Main St" • 10 min ago
+            </li>
+            <li>
+              <span class="font-semibold text-gray-100">Scheduled</span> action "Streetlight inspection – Riverside Park" • 1 h ago
+            </li>
+            <li>
+              <span class="font-semibold text-gray-100">Replied</span> in <span class="text-gray-100">#city-hall</span> channel • 3 h ago
+            </li>
+          </ul>
+        </div>
+        </div>
+
+        <!-- Issues tab content -->
+        <div id="profile-tab-issues" class="hidden space-y-4">
+          <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+            <h2 class="text-sm font-semibold mb-2">Issues created or assigned</h2>
+            <p class="text-gray-400 mb-2">Sample list of reports this profile interacted with.</p>
+            <ul class="space-y-2 text-gray-300">
+              <li>
+                <span class="font-semibold text-gray-100">Pothole on 3rd Ave & Main St</span> • created 2 days ago • Status: Open
+              </li>
+              <li>
+                <span class="font-semibold text-gray-100">Street light outage near Riverside Park</span> • assigned 5 days ago • Status: In progress
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects tab content -->
+        <div id="profile-tab-projects" class="hidden space-y-4">
+          <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+            <h2 class="text-sm font-semibold mb-2">Projects</h2>
+            <p class="text-gray-400 mb-2">High-level groupings of reports and tasks for Tagum City.</p>
+            <ul class="space-y-2 text-gray-300">
+              <li><span class="font-semibold text-gray-100">Downtown road safety</span> – Coordinating pothole repairs and signage.</li>
+              <li><span class="font-semibold text-gray-100">Barangay cleanup drives</span> – Multi-barangay waste management efforts.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Discussions tab content -->
+        <div id="profile-tab-discussions" class="hidden space-y-4">
+          <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+            <h2 class="text-sm font-semibold mb-2">Discussions</h2>
+            <p class="text-gray-400 mb-2">Threads and conversations this admin participated in.</p>
+            <ul class="space-y-2 text-gray-300">
+              <li>Follow-up discussion on <span class="font-semibold text-gray-100">flood-prone areas in Magugpo</span>.</li>
+              <li>Clarification thread on <span class="font-semibold text-gray-100">night market noise complaints</span>.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Management tab content -->
+        <div id="profile-tab-management" class="hidden space-y-4">
+          <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 text-xs">
+            <h2 class="text-sm font-semibold mb-2">Management actions</h2>
+            <p class="text-gray-400 mb-2">Approvals and escalations handled by this admin.</p>
+            <ul class="space-y-2 text-gray-300">
+              <li>Approved schedule for <span class="font-semibold text-gray-100">Streetlight inspection – Riverside Park</span>.</li>
+              <li>Escalated <span class="font-semibold text-gray-100">Drainage clearing – Apokon</span> to high priority.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="border-t border-gray-800 text-[11px] text-gray-500 flex justify-center gap-4 py-4 mt-4">
+    <span>&copy; 2025 Tagum UYnite</span>
+    <a href="#" class="hover:text-gray-300">Terms</a>
+    <a href="#" class="hover:text-gray-300">Privacy</a>
+    <a href="#" class="hover:text-gray-300">Status</a>
+  </footer>
+
+  <script src="../scripts/navbar.js"></script>
+  <script>
+    // Simple tab switching for profile page
+    (function () {
+      const tabsContainer = document.getElementById('profile-tabs');
+      if (!tabsContainer) return;
+
+      const buttons = tabsContainer.querySelectorAll('button[data-tab]');
+      const sections = {
+        overview: document.getElementById('profile-tab-overview'),
+        issues: document.getElementById('profile-tab-issues'),
+        projects: document.getElementById('profile-tab-projects'),
+        discussions: document.getElementById('profile-tab-discussions'),
+        management: document.getElementById('profile-tab-management'),
+      };
+
+      function showTab(key) {
+        Object.keys(sections).forEach((name) => {
+          const el = sections[name];
+          if (!el) return;
+          if (name === key) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+
+        buttons.forEach((btn) => {
+          const isActive = btn.getAttribute('data-tab') === key;
+          btn.classList.toggle('text-gray-100', isActive);
+          btn.classList.toggle('text-gray-400', !isActive);
+          btn.classList.toggle('border-b-2', isActive);
+          btn.classList.toggle('border-orange-500', isActive);
+        });
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-tab');
+          if (key) showTab(key);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

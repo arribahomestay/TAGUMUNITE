@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagum UYnite - Schedules</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="../styles/footer.css" />
+</head>
+<body class="h-full bg-gray-900 text-gray-100">
+  <div id="navbar-root"></div>
+
+  <div class="flex min-h-screen">
+    <!-- Left sidebar spacer to align with dashboard layout -->
+    <div class="hidden md:flex w-64 bg-gray-900 border-r border-gray-800"></div>
+
+    <!-- Main content -->
+    <main class="flex-1 flex flex-col max-w-6xl mx-auto w-full px-4 pt-6 pb-10">
+      <header class="mb-4 flex items-center justify-between">
+        <div>
+          <h1 class="text-2xl font-semibold">Schedules</h1>
+          <p class="text-xs text-gray-400">Plan and review field actions for Tagum UYnite reports.</p>
+        </div>
+      </header>
+
+      <section class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4 text-xs">
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <p class="text-gray-400 mb-1">Actions today</p>
+          <p class="text-2xl font-semibold">6</p>
+          <p class="text-[11px] text-gray-500">Scheduled across 4 barangays</p>
+        </div>
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <p class="text-gray-400 mb-1">This week</p>
+          <p class="text-2xl font-semibold">21</p>
+          <p class="text-[11px] text-gray-500">Including roadworks, lighting, and waste pickup</p>
+        </div>
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <p class="text-gray-400 mb-1">Unscheduled reports</p>
+          <p class="text-2xl font-semibold">9</p>
+          <p class="text-[11px] text-gray-500">Reports needing target date and assigning</p>
+        </div>
+      </section>
+
+      <section class="flex-1 grid grid-cols-1 xl:grid-cols-3 gap-4">
+        <!-- Calendar-style overview -->
+        <div class="xl:col-span-2 bg-gray-800 border border-gray-700 rounded-lg flex flex-col">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-gray-700 text-xs">
+            <div class="flex items-center gap-2">
+              <button class="px-2 py-1 rounded-md border border-gray-700 hover:border-gray-500">Today</button>
+              <button class="px-2 py-1 rounded-md border border-gray-700 hover:border-gray-500">◀</button>
+              <button class="px-2 py-1 rounded-md border border-gray-700 hover:border-gray-500">▶</button>
+            </div>
+            <p class="font-semibold">November 2025</p>
+            <div class="text-gray-400">Weekly view</div>
+          </div>
+
+          <div class="flex-1 grid grid-cols-7 border-t border-gray-800 text-[11px]">
+            <!-- Simple static week header + sample slots -->
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Mon</div>
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Tue</div>
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Wed</div>
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Thu</div>
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Fri</div>
+            <div class="border-r border-gray-800 bg-gray-900 px-2 py-1 font-semibold">Sat</div>
+            <div class="bg-gray-900 px-2 py-1 font-semibold">Sun</div>
+
+            <!-- One row of sample items -->
+            <div class="border-t border-r border-gray-800 align-top p-2 space-y-1">
+              <div class="text-[10px] text-gray-500 mb-1">Barangay Magugpo East</div>
+              <div class="px-2 py-1 rounded-md bg-yellow-600 text-[11px] text-gray-50">Road repairs – Pothole cluster</div>
+            </div>
+            <div class="border-t border-r border-gray-800 align-top p-2 space-y-1">
+              <div class="text-[10px] text-gray-500 mb-1">Barangay Visayan Village</div>
+              <div class="px-2 py-1 rounded-md bg-blue-600 text-[11px] text-gray-50">Streetlight inspection</div>
+            </div>
+            <div class="border-t border-r border-gray-800 align-top p-2 space-y-1">
+              <div class="text-[10px] text-gray-500 mb-1">Barangay Apokon</div>
+              <div class="px-2 py-1 rounded-md bg-green-600 text-[11px] text-gray-50">Drainage clearing</div>
+            </div>
+            <div class="border-t border-r border-gray-800 align-top p-2"></div>
+            <div class="border-t border-r border-gray-800 align-top p-2"></div>
+            <div class="border-t border-r border-gray-800 align-top p-2"></div>
+            <div class="border-t border-gray-800 align-top p-2"></div>
+          </div>
+        </div>
+
+        <!-- Right: schedule list / form -->
+        <div class="bg-gray-800 border border-gray-700 rounded-lg flex flex-col text-sm">
+          <div class="px-4 py-3 border-b border-gray-700 flex items-center justify-between">
+            <h2 class="text-sm font-semibold">Upcoming actions</h2>
+            <span class="text-[11px] text-gray-400">Sample data</span>
+          </div>
+
+          <div class="flex-1 overflow-y-auto px-4 py-3 space-y-3 text-xs">
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <div class="flex items-center justify-between mb-1">
+                <p class="font-semibold text-gray-100">Pothole – 3rd Ave & Main St</p>
+                <span class="text-[11px] text-gray-400">Today • 8:00 PM</span>
+              </div>
+              <p class="text-gray-300 mb-1">Night road crew deployment. Coordinate with Traffic Management for rerouting.</p>
+              <p class="text-[11px] text-gray-500">Assigned to: City Engineering • Barangay Magugpo Poblacion</p>
+            </div>
+
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <div class="flex items-center justify-between mb-1">
+                <p class="font-semibold text-gray-100">Street light outage – Riverside Park</p>
+                <span class="text-[11px] text-gray-400">Tomorrow • 7:30 PM</span>
+              </div>
+              <p class="text-gray-300 mb-1">Replace 3 non-functioning lamps along the riverside path.</p>
+              <p class="text-[11px] text-gray-500">Assigned to: Electrical Maintenance • Barangay La Filipina</p>
+            </div>
+
+            <div class="border border-gray-700 rounded-md p-3 bg-gray-900">
+              <div class="flex items-center justify-between mb-1">
+                <p class="font-semibold text-gray-100">Garbage overflow – Zone 3</p>
+                <span class="text-[11px] text-gray-400">Fri • 9:00 AM</span>
+              </div>
+              <p class="text-gray-300 mb-1">Additional collection round requested due to weekend backlog.</p>
+              <p class="text-[11px] text-gray-500">Assigned to: Environment & Waste • Barangay Magdum</p>
+            </div>
+          </div>
+
+          <form class="border-t border-gray-700 px-4 py-3 space-y-2 text-xs">
+            <p class="font-semibold text-gray-100">Quick schedule</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <input type="text" class="px-2 py-1.5 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Linked report ID" />
+              <input type="text" class="px-2 py-1.5 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Barangay" />
+              <input type="datetime-local" class="px-2 py-1.5 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" />
+              <input type="text" class="px-2 py-1.5 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Assigned department" />
+            </div>
+            <textarea rows="2" class="w-full px-2 py-1.5 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500" placeholder="Notes about this action (equipment, coordination, etc.)"></textarea>
+            <div class="flex justify-end">
+              <button type="button" class="px-4 py-1.5 rounded-md bg-blue-600 hover:bg-blue-500 text-[11px] font-semibold text-white">Save schedule (UI only)</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="border-t border-gray-800 text-[11px] text-gray-500 flex justify-center gap-4 py-4 mt-4">
+    <span>&copy; 2025 Tagum UYnite</span>
+    <a href="#" class="hover:text-gray-300">Terms</a>
+    <a href="#" class="hover:text-gray-300">Privacy</a>
+    <a href="#" class="hover:text-gray-300">Status</a>
+  </footer>
+
+  <script src="../scripts/navbar.js"></script>
+</body>
+</html>

@@ -29,10 +29,16 @@ function setActiveNavItem(pathname) {
   const sectionFromPath = () => {
     if (!pathname) return "dashboard";
     const lower = pathname.toLowerCase();
+    if (lower.includes("profile")) return "profile";
     if (lower.includes("issues")) return "issues";
     if (lower.includes("projects")) return "projects";
     if (lower.includes("discussions")) return "discussions";
     if (lower.includes("management")) return "management";
+    if (lower.includes("maps")) return "maps";
+    if (lower.includes("messages")) return "messages";
+    if (lower.includes("settings")) return "settings";
+    if (lower.includes("schedules")) return "schedules";
+    if (lower.includes("help")) return "help";
     return "dashboard";
   };
 
@@ -54,10 +60,16 @@ function setActiveNavItem(pathname) {
   if (titleEl) {
     const map = {
       dashboard: "Dashboard",
+      profile: "Profile",
       issues: "Issues",
       projects: "Projects",
       discussions: "Discussions",
       management: "Management",
+      maps: "Maps",
+      messages: "Messages",
+      settings: "Settings",
+      schedules: "Schedules",
+      help: "Help",
     };
     titleEl.textContent = map[current] || "Dashboard";
   }

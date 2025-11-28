@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagum UYnite - Messages</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="../styles/footer.css" />
+</head>
+<body class="h-full bg-gray-900 text-gray-100">
+  <div id="navbar-root"></div>
+
+  <div class="flex min-h-screen">
+    <!-- Left sidebar: departments / group chats -->
+    <aside class="hidden md:flex w-64 bg-gray-900 border-r border-gray-800">
+      <div class="flex flex-col w-full pt-4 pb-6 px-3 space-y-4 text-sm">
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Departments</h2>
+          <nav class="space-y-1" id="department-list">
+            <button class="w-full flex items-center justify-between px-2 py-1.5 rounded-md bg-gray-800 text-gray-100 text-left" data-channel="#city-hall">
+              <span>City Mayor's Office</span>
+              <span class="text-[10px] text-gray-400">#city-hall</span>
+            </button>
+            <button class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-gray-800 text-gray-300 text-left" data-channel="#engineering">
+              <span>City Engineering</span>
+              <span class="text-[10px] text-gray-400">#engineering</span>
+            </button>
+            <button class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-gray-800 text-gray-300 text-left" data-channel="#traffic">
+              <span>Traffic Management</span>
+              <span class="text-[10px] text-gray-400">#traffic</span>
+            </button>
+            <button class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-gray-800 text-gray-300 text-left" data-channel="#environment">
+              <span>Environment & Waste</span>
+              <span class="text-[10px] text-gray-400">#environment</span>
+            </button>
+            <button class="w-full flex items-center justify-between px-2 py-1.5 rounded-md hover:bg-gray-800 text-gray-300 text-left" data-channel="#barangay-coord">
+              <span>Barangay Coordinators</span>
+              <span class="text-[10px] text-gray-400">#barangays</span>
+            </button>
+          </nav>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">Direct messages</h2>
+          <div class="space-y-1 text-xs text-gray-300">
+            <button class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-gray-800 text-left">
+              <span class="h-6 w-6 rounded-full bg-blue-500 flex items-center justify-center text-[11px] font-semibold">JD</span>
+              <span>Juan Dela Cruz</span>
+            </button>
+            <button class="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-gray-800 text-left">
+              <span class="h-6 w-6 rounded-full bg-green-500 flex items-center justify-center text-[11px] font-semibold">MS</span>
+              <span>Maria Santos</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main chat area -->
+    <main class="flex-1 flex flex-col max-w-6xl mx-auto w-full px-4 pt-6 pb-10">
+      <section class="flex-1 flex flex-col bg-gray-900">
+        <!-- Channel header -->
+        <header class="flex items-center justify-between mb-3">
+          <div>
+            <h1 id="messages-channel-title" class="text-2xl font-semibold">#city-hall</h1>
+            <p class="text-xs text-gray-400">City Mayor's Office • Internal discussion for escalated reports and announcements.</p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 text-xs text-gray-400">
+            <span class="px-2 py-1 rounded-md border border-gray-700 bg-gray-800">Tagum UYnite</span>
+          </div>
+        </header>
+
+        <!-- Chat window -->
+        <div class="flex-1 bg-gray-800 border border-gray-700 rounded-lg flex flex-col overflow-hidden">
+          <!-- Message list -->
+          <div id="messages-list" class="flex-1 overflow-y-auto px-4 py-3 space-y-4 text-sm">
+            <!-- Date separator -->
+            <div class="flex items-center gap-3 text-[11px] text-gray-500">
+              <div class="flex-1 h-px bg-gray-700"></div>
+              <span>Today</span>
+              <div class="flex-1 h-px bg-gray-700"></div>
+            </div>
+
+            <!-- Example messages -->
+            <div class="flex items-start gap-3">
+              <div class="h-8 w-8 rounded-full bg-yellow-500 flex items-center justify-center text-[11px] font-semibold">EN</div>
+              <div class="min-w-0">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-semibold text-gray-100">Engineering Desk</span>
+                  <span class="text-[11px] text-gray-500">09:12</span>
+                </div>
+                <p class="text-gray-200">Received 3 new pothole reports from downtown. Logging them as high priority for tonight's field team.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-[11px] font-semibold">TM</div>
+              <div class="min-w-0">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-semibold text-gray-100">Traffic Management</span>
+                  <span class="text-[11px] text-gray-500">09:18</span>
+                </div>
+                <p class="text-gray-200">We'll deploy an advisory to redirect vehicles between 8PM–10PM while works are ongoing.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <div class="h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center text-[11px] font-semibold">YO</div>
+              <div class="min-w-0">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-semibold text-gray-100">You</span>
+                  <span class="text-[11px] text-gray-500">09:21</span>
+                </div>
+                <p class="text-gray-200">Please also update the Tagum UYnite feed once the repair is marked resolved so residents are notified.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message input -->
+          <form id="message-input-form" class="border-t border-gray-700 px-4 py-3 bg-gray-850 flex items-end gap-2">
+            <textarea
+              id="message-input"
+              rows="1"
+              class="flex-1 resize-none rounded-md bg-gray-900 border border-gray-700 px-3 py-2 text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="Message #city-hall"
+            ></textarea>
+            <button
+              type="submit"
+              class="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-500 text-xs font-semibold text-white whitespace-nowrap"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="border-t border-gray-800 text-[11px] text-gray-500 flex justify-center gap-4 py-4 mt-4">
+    <span>&copy; 2025 Tagum UYnite</span>
+    <a href="#" class="hover:text-gray-300">Terms</a>
+    <a href="#" class="hover:text-gray-300">Privacy</a>
+    <a href="#" class="hover:text-gray-300">Status</a>
+  </footer>
+
+  <script src="../scripts/navbar.js"></script>
+  <script>
+    // Very simple front-end only chat UX: submit adds message to the list.
+    (function () {
+      const form = document.getElementById("message-input-form");
+      const textarea = document.getElementById("message-input");
+      const list = document.getElementById("messages-list");
+
+      if (!form || !textarea || !list) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const text = textarea.value.trim();
+        if (!text) return;
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "flex items-start gap-3";
+        wrapper.innerHTML = `
+          <div class="h-8 w-8 rounded-full bg-gray-400 flex items-center justify-center text-[11px] font-semibold">YO</div>
+          <div class="min-w-0">
+            <div class="flex items-baseline gap-2">
+              <span class="font-semibold text-gray-100">You</span>
+              <span class="text-[11px] text-gray-500">Just now</span>
+            </div>
+            <p class="text-gray-200"></p>
+          </div>
+        `;
+        wrapper.querySelector("p").textContent = text;
+        list.appendChild(wrapper);
+
+        textarea.value = "";
+        list.scrollTop = list.scrollHeight;
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tagum UYnite - Maps</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles/dashboard.css" />
+  <link rel="stylesheet" href="../styles/footer.css" />
+</head>
+<body class="h-full bg-gray-900 text-gray-100">
+  <div id="navbar-root"></div>
+
+  <div class="flex min-h-screen">
+    <!-- Left sidebar spacer to match dashboard layout on desktop -->
+    <div class="hidden md:flex w-64 bg-gray-900 border-r border-gray-800"></div>
+
+    <!-- Main content wrapper -->
+    <div class="flex-1 flex flex-col max-w-6xl mx-auto w-full px-4 gap-6 pt-6 pb-10">
+      <section class="flex-1 space-y-4">
+        <header class="flex items-center justify-between mb-2">
+          <h1 class="text-2xl font-semibold">Maps</h1>
+        </header>
+
+        <div class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <h2 class="text-sm font-semibold mb-3">Tagum City, Davao del Norte</h2>
+          <p class="text-xs text-gray-400 mb-3">
+            Use this map to explore key locations and issues around Tagum City.
+          </p>
+
+          <form id="tagum-map-search" class="mb-3 flex flex-col sm:flex-row gap-2 text-xs" autocomplete="off">
+            <label for="tagum-search-input" class="sr-only">Search barangay or street in Tagum City</label>
+            <input
+              id="tagum-search-input"
+              type="text"
+              placeholder="Search barangay or street in Tagum City (e.g. Apokon, Pioneer Ave)"
+              class="flex-1 px-3 py-2 rounded-md bg-gray-900 border border-gray-700 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+            />
+            <button
+              type="submit"
+              class="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-500 text-gray-100 font-medium whitespace-nowrap"
+            >
+              Search
+            </button>
+          </form>
+
+          <div class="relative w-full mt-2 rounded-md overflow-hidden border border-gray-700 bg-gray-900" style="padding-bottom: 72%;">
+            <iframe
+              title="Tagum City Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15916.51079196893!2d125.792!3d7.4475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f94bcf5c9e4a4d%3A0xade0e8e79fba399a!2sTagum%20City%2C%20Davao%20del%20Norte!5e0!3m2!1sen!2sph!4v1700000000000!5m2!1sen!2sph"
+              width="600"
+              height="450"
+              style="border:0; position:absolute; top:0; left:0; width:100%; height:100%;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="border-t border-gray-800 text-[11px] text-gray-500 flex justify-center gap-4 py-4 mt-4">
+    <span>&copy; 2025 Tagum UYnite</span>
+    <a href="#" class="hover:text-gray-300">Terms</a>
+    <a href="#" class="hover:text-gray-300">Privacy</a>
+    <a href="#" class="hover:text-gray-300">Status</a>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById("tagum-map-search");
+      const input = document.getElementById("tagum-search-input");
+      const iframe = document.querySelector("iframe[title='Tagum City Map']");
+
+      if (!form || !input || !iframe) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const raw = input.value.trim();
+        if (!raw) return;
+
+        // Always keep search inside Tagum City by appending the city name
+        const query = encodeURIComponent(raw + ", Tagum City, Davao del Norte");
+        const url = "https://www.google.com/maps/embed/v1/search?key=YOUR_API_KEY&q=" + query;
+
+        // If you do not have a Maps Embed API key, you can instead open a new tab
+        // window.open("https://www.google.com/maps/search/" + query, "_blank");
+        iframe.src = url;
+      });
+    })();
+  </script>
+
+  <script src="../scripts/navbar.js"></script>
+</body>
+</html>
